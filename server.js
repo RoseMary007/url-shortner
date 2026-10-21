@@ -18,6 +18,19 @@ app.use(express.json());
 // Register URL creation and redirect routes
 app.use(urlRoutes);
 
+
+app.get("/api/debug/routes", (req, res) => {
+  res.status(200).json({
+    service: "AI URL Shortener",
+    routes: [
+      "POST /api/urls",
+      "GET /r/:shortCode",
+      "GET /api/urls/:shortCode/analytics",
+    ],
+  });
+});
+
+
 // Home route: check whether the server is running
 app.get("/", (req, res) => {
   res.status(200).json({
