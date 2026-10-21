@@ -65,13 +65,14 @@ const shortUrl = `${baseUrl}/r/${shortCode}`;
       },
     });
   } catch (error) {
-    console.error("Create URL error:", error.message);
+  console.error("Create URL error:", error);
 
-    return res.status(500).json({
-      success: false,
-      message: "Unable to create short URL.",
-    });
-  }
+  return res.status(500).json({
+    success: false,
+    message: error.message || "Unable to create short URL.",
+  });
+}
+
 });
 
 // GET: Redirect to the original URL
